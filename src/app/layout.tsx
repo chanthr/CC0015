@@ -17,8 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Glow & Flow",
-  description: "Your safe space for wellness, joy, and self-acceptance.",
+  title: "OwnPace",
+  description: "A physical-digital wellbeing system. Detect, interrupt, guide, reflect.",
 };
 
 export default function RootLayout({

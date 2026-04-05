@@ -28,13 +28,13 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
         onChange={(e) => setInput(e.target.value)}
         placeholder="Share what's on your mind..."
         disabled={disabled}
-        className="flex-1 bg-glow-white border border-glow-purple-300 rounded-full px-5 py-3 text-sm text-glow-purple-900 placeholder:text-glow-warm-gray/50 focus:outline-none focus:border-glow-purple-500 focus:ring-2 focus:ring-glow-purple-300/30 disabled:opacity-50"
+        className="flex-1 bg-own-white border border-own-warm rounded-full px-5 py-3 text-sm text-own-deep placeholder:text-own-gray-light focus:outline-none focus:border-own-teal focus:ring-2 focus:ring-own-teal/20 disabled:opacity-50"
       />
       <ButtonRoot
         type="submit"
         isDisabled={disabled || !input.trim()}
         isIconOnly
-        className="bg-glow-purple-700 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-glow-purple-500 transition-colors shrink-0"
+        className="bg-own-teal text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-own-teal-light transition-colors shrink-0"
       >
         <Send className="w-5 h-5" />
       </ButtonRoot>

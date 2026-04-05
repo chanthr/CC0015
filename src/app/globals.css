@@ -2,8 +2,8 @@
 @import "@heroui/styles";
 
 :root {
-  --background: #FDF8F0;
-  --foreground: #2D1B4E;
+  --background: #F8F6F2;
+  --foreground: #1A1A2E;
 }
 
 @theme inline {
@@ -12,17 +12,22 @@
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
 
-  --color-glow-purple-900: #2D1B4E;
-  --color-glow-purple-700: #5B3A8C;
-  --color-glow-purple-500: #8B6FC0;
-  --color-glow-purple-300: #C4B1E0;
-  --color-glow-purple-100: #EDE7F6;
-  --color-glow-lavender: #D8CCF0;
-  --color-glow-cream: #FDF8F0;
-  --color-glow-beige: #F5EFE6;
-  --color-glow-white: #FFFFFF;
-  --color-glow-warm-gray: #6B5E6E;
-  --color-glow-joy-gold: #F0C75E;
+  /* OwnPace - Calm, grounding palette */
+  --color-own-deep: #1A1A2E;
+  --color-own-navy: #16213E;
+  --color-own-indigo: #0F3460;
+  --color-own-teal: #1A8F7D;
+  --color-own-teal-light: #2EC4B6;
+  --color-own-teal-muted: #D1F0EB;
+  --color-own-warm: #E8DDD3;
+  --color-own-cream: #F8F6F2;
+  --color-own-sand: #F0EBE3;
+  --color-own-white: #FFFFFF;
+  --color-own-gray: #6B7280;
+  --color-own-gray-light: #9CA3AF;
+  --color-own-lavender: #C8B6E2;
+  --color-own-rose: #E8A0BF;
+  --color-own-gold: #D4A76A;
 }
 
 body {
@@ -47,6 +52,11 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -57,6 +67,10 @@ body {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
 }
 
 .animation-delay-2000 {
