@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { sendChatMessage, ChatMessage, ChatResponse } from "@/lib/api";
+import { ChatMessage } from "@/lib/api";
+import { getMockResponse } from "@/lib/mock-responses";
 
 export function useChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -16,22 +17,21 @@ export function useChat() {
     setIsLoading(true);
     setError(null);
 
-    try {
-      const allMessages = [...messages, userMessage];
-      const response: ChatResponse = await sendChatMessage(allMessages);
+    // Simulate typing delay
+    await new Promise((resolve) => setTimeout(resolve, 800 + Math.random() * 700));
 
+    const mockResponse = getMockResponse(text);
+    if (mockResponse) {
       const assistantMessage: ChatMessage = {
         role: "assistant",
-        content: response.reply,
+        content: mockResponse.reply,
       };
       setMessages((prev) => [...prev, assistantMessage]);
-      setSuggestions(response.suggestions);
-    } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
+      setSuggestions(mockResponse.suggestions);
     }
-  }, [messages]);
+
+    setIsLoading(false);
+  }, []);
 
   return { messages, isLoading, suggestions, error, sendMessage };
 }

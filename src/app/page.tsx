@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Sparkles, Target, TrendingUp, Users, MessageCircle, ChevronRight, Settings } from "lucide-react";
 import { Card, CardRoot, CardContent, CardHeader, CardTitle, Button, ButtonRoot, Chip, ChipRoot } from "@heroui/react";
 import { JOY_SPARKS, CHALLENGES } from "@/lib/constants";
 
 export default function HomePage() {
+  const router = useRouter();
   const [sparkIndex, setSparkIndex] = useState(0);
   const [greeting, setGreeting] = useState("Welcome");
+  const [sparkStarted, setSparkStarted] = useState(false);
 
   useEffect(() => {
     setSparkIndex(Math.floor(Math.random() * JOY_SPARKS.length));
@@ -77,9 +80,43 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <ButtonRoot variant="primary" className="w-full mt-4 bg-glow-purple-700 text-white py-2.5 rounded-xl text-sm font-medium hover:bg-glow-purple-500">
-              Start This Spark
-            </ButtonRoot>
+            {!sparkStarted ? (
+              <ButtonRoot
+                variant="primary"
+                onPress={() => setSparkStarted(true)}
+                className="w-full mt-4 bg-glow-purple-700 text-white py-2.5 rounded-xl text-sm font-medium hover:bg-glow-purple-500"
+              >
+                Start This Spark
+              </ButtonRoot>
+            ) : (
+              <div className="mt-4 animate-fade-in-up">
+                <div className="bg-glow-purple-100 rounded-xl p-4 text-center mb-3">
+                  <p className="text-sm text-glow-purple-900 font-medium mb-1">
+                    {randomSpark.emoji} {randomSpark.title} in progress...
+                  </p>
+                  <p className="text-xs text-glow-warm-gray">{randomSpark.description}</p>
+                </div>
+                <div className="flex gap-2">
+                  <ButtonRoot
+                    variant="primary"
+                    onPress={() => {
+                      setSparkStarted(false);
+                      setSparkIndex(Math.floor(Math.random() * JOY_SPARKS.length));
+                    }}
+                    className="flex-1 bg-glow-purple-700 text-white py-2.5 rounded-xl text-sm font-medium hover:bg-glow-purple-500"
+                  >
+                    Done! ✓
+                  </ButtonRoot>
+                  <ButtonRoot
+                    variant="outline"
+                    onPress={() => setSparkStarted(false)}
+                    className="flex-1 border-glow-purple-300 text-glow-purple-700 py-2.5 rounded-xl text-sm font-medium hover:bg-glow-purple-100"
+                  >
+                    Skip
+                  </ButtonRoot>
+                </div>
+              </div>
+            )}
           </CardContent>
         </CardRoot>
       </div>
