@@ -40,7 +40,7 @@ export default function HomePage() {
         <CardRoot className="bg-gradient-to-br from-own-indigo to-own-teal rounded-2xl p-5 text-white border-none shadow-lg">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-white/70 text-sm">CalmGrip Band</p>
+              <p className="text-white/70 text-sm">CalmGrip</p>
               <p className="text-lg font-semibold mt-1">Connected · Calm Entry</p>
               <p className="text-white/60 text-xs mt-1">Last squeeze: 2h ago · Anxiety trend: ↓ improving</p>
             </div>
